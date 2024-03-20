@@ -15,15 +15,27 @@ const MovieCard = ({ data, fromSearch, mediaType }) => {
     const posterUrl = data.poster_path
         ? url.poster + data.poster_path
         : PosterFallback;
+
     return (
         <div
             className="movieCard"
+            role="button"
             onClick={() =>
                 navigate(`/${data.media_type || mediaType}/${data.id}`)
             }
+            onKeyPress={(e) => {
+                if (e.key === 'Enter') {
+                    navigate(`/${data.media_type || mediaType}/${data.id}`);
+                }
+            }}
+            tabIndex={0}
         >
             <div className="posterBlock">
-                <Img className="posterImg" src={posterUrl} />
+                <Img
+                    className="posterImg"
+                    src={posterUrl}
+                    alt={`Poster for ${data.title || data.name}`}
+                />
                 {!fromSearch && (
                     <React.Fragment>
                         <CircleRating rating={data.vote_average.toFixed(1)} />
@@ -40,5 +52,6 @@ const MovieCard = ({ data, fromSearch, mediaType }) => {
         </div>
     );
 };
+
 
 export default MovieCard;
