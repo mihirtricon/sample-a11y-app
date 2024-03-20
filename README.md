@@ -1,2 +1,2 @@
-# sample-a11y-app
-Sample app with pages that are accessible as per WCAG 2.0 AA standard.
+# Movix
+Movix is one of the best movies database application with top notch frontend technologies such as React, Redux & SCSS.
